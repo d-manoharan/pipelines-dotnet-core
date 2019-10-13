@@ -39,7 +39,13 @@ steps:
     pathtoPublish: '$(Build.ArtifactStagingDirectory)' 
     artifactName: 'myWebsiteName'
 
-- task: NuGetCommand@2
-  inputs:
-    command: pack
-    packagesToPack: '**/*.csproj'
+# Pack a NuGet package to a test directory
+- task: DotNetCoreCLI@2
+  inputs: 
+    command: 'pack'
+    outputDir: '$(Build.ArtifactStagingDirectory)/TestDir'
+    
+#- task: NuGetCommand@2
+#  inputs:
+#    command: pack
+#    packagesToPack: '**/*.csproj'
